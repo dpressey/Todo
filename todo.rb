@@ -1,7 +1,7 @@
 require 'data_mapper'
-require 'dm-migrations'
 require 'sinatra'
 require 'shotgun'
+require 'sqlite3'
 
 
 #=========================================================================
@@ -11,7 +11,7 @@ require 'shotgun'
 
 DataMapper::Logger.new($stdout, :debug)
 
-DataMapper.setup(:default, 'sqlite://#{Dir.pwd}/database.db')
+DataMapper.setup(:default, 'sqlite:todo.db')
 
 #=========================================================================
 #================================== MODELS ===============================
@@ -19,7 +19,6 @@ DataMapper.setup(:default, 'sqlite://#{Dir.pwd}/database.db')
 
 class List
 	include DataMapper::Resource
-	include Enumerable
 
 	property :id 			,  	Serial
 	property :content		,  	Text 
@@ -27,7 +26,7 @@ class List
 	property :updated_at	,  	DateTime
 end
 
-DataMapper.finalize
+DataMapper.auto_migrate!
 
 
 #=========================================================================
