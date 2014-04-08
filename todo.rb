@@ -1,4 +1,5 @@
 require 'data_mapper'
+require 'dm-migrations'
 require 'sinatra'
 require 'shotgun'
 
@@ -18,9 +19,10 @@ DataMapper.setup(:default, 'sqlite://#{Dir.pwd}/database.db')
 
 class List
 	include DataMapper::Resource
+	include Enumerable
 
 	property :id 			,  	Serial
-	property :item			,  	Text 
+	property :content		,  	Text 
 	property :created_at	,  	DateTime
 	property :updated_at	,  	DateTime
 end
@@ -34,11 +36,18 @@ DataMapper.finalize
 
 
 get '/' do
+	@items = List.all :order => :id.desc
 	erb :index
 end
 
 post '/' do
-	params[:input].upcase + "Say Something....I'M GIVING UP ON YOU"
+	i = List.new
+	i.content = params[:content]
+	i.created_at = Time.now
+	i.updated_at = Time.now
+	i.save
+
+	redirect '/'
 end
 
 get '/about' do
