@@ -21,7 +21,7 @@ class List
 	include DataMapper::Resource
 
 	property :id 			,  	Serial
-	property :content		,  	Text 
+	property :content		,  	Text 	, :required => true
 	property :created_at	,  	DateTime
 	property :updated_at	,  	DateTime
 end
@@ -50,7 +50,7 @@ post '/' do
 end
 
 get '/about' do
-	"this is the about me section"
+	erb :about
 end
 
 not_found do
