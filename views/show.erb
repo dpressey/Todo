@@ -1,0 +1,6 @@
+<% @items.each do |item| %>
+	<article>
+		<p>ToDo: <%= item.content%> </p>
+		<p>Created At: <%= item.created_at %> </p>
+	</article>
+<% end %>
