@@ -69,6 +69,35 @@ textarea {
 	right: 100px;
 }
 
+.list-notes {
+	
+}
+
+.list-container {
+	position: relative;
+	top: 50px;
+	border: 1px solid black;
+	margin-top: 2px;
+	border-left: none;
+	border-right: none;
+	padding: 20px;
+	color:#190336;
+}
+
+.button {
+	position: relative;
+	left:;
+	height:30px; 
+	width:60px;
+	float: right;
+}
+
+#delete {
+	background: #940000;
+	border-radius: 2px;
+	color: white;
+}
+
 #clear-float {
 	clear: both;
 }
@@ -85,5 +114,6 @@ footer {
 }
 
 #footer-text {
-	color: #09B2A5;
+	color: black;
+	font-size: 1.1em;
 }

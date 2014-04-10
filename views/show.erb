@@ -1,6 +1,7 @@
 <% @lists.each do |list| %>
-	<article>
-		<p>ToDo: <%= list.content %> </p>
-		<p>Created At: <%= list.created_at %> </p>
+	<article class="list-container">
+		<%= list.content %>
+		<button class="button">Edit</button>
+		<button id="delete" class="button">Delete</button>
 	</article>
 <% end %>

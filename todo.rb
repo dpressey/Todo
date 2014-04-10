@@ -52,13 +52,16 @@ end
 
 # route that shows all the to-do items created
 get '/show' do
-	@lists = List.all(:order => :id.desc, :limit => 5)
+	@lists = List.all(:order => :id.desc, :limit => 7)
 	erb :show
 end
 
-# route that shows info about this web application
-get '/about' do
-	erb :about
+# route that updates the items on the show page
+put '/show' do
+end
+
+# route that deletes the items on the show page
+delete '/show' do
 end
 
 # if routes are requested that don't exist
