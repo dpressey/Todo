@@ -1,7 +1,89 @@
-body {
-	background: #0CE864;
+#logo {
+	position: relative;
+	margin: 0;
+	color: black;
+	font-size: 1.3em;
+	left: 20px;
+	top: 35px;
+	width: 200px;
+}
+
+nav {
+	background-color: #FF4F19;
+	height: 100px;
+}
+
+li {
+	position: relative;
+	left: 1100px;
+	top: 20px;
+	display: inline-block;
+	padding: 10px;
+}
+
+a {
+	text-decoration: none;
+}
+
+
+body p {
+	color: #5BB209;
 }
 
 h1 {
 	text-align: center;
+}
+
+.list {
+	position: relative;
+	top: 100px;
+	left: 145px;
+}
+
+textarea {
+	position: relative;
+	width: 1000px;
+
+}
+
+#add-item {
+	height: 55px;
+	background: #0030FF;
+	color: white;
+	border-radius: 3px;
+	
+}
+
+#left-article {
+	position: relative;
+	float: left;
+	top: 200px;
+	left: 100px;
+
+}
+
+#right-article {
+	position: relative;
+	float: right;
+	top: 200px;
+	right: 100px;
+}
+
+#clear-float {
+	clear: both;
+}
+
+#four {
+	height: 300px;
+}
+
+
+footer {
+	position:fixed;
+	bottom:0;
+	z-index:999999;
+}
+
+#footer-text {
+	color: #09B2A5;
 }

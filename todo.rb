@@ -1,48 +1,45 @@
 require 'data_mapper'
 require 'sinatra'
 require 'shotgun'
-require 'sqlite3'
+require 'dm-sqlite-adapter'
 
-
-#=========================================================================
-#============================ SETUP DATABASE =============================
-#=========================================================================
-
-
-DataMapper::Logger.new($stdout, :debug)
-
-DataMapper.setup(:default, 'sqlite:todo.db')
 
 #=========================================================================
 #================================== MODELS ===============================
 #=========================================================================
 
+DataMapper::setup(:default, 'sqlite:todo.db')
+
 class List 
 	include DataMapper::Resource
-	include Enumerable
-	
-	def each &block
-	end
 
-	property :id 			,  	Serial
-	property :content		,  	Text 	, :required => true
-	property :created_at	,  	DateTime
-	property :updated_at	,  	DateTime
+	property :id,	Serial
+	property :content,	Text,	:required => true
+	property :created_at,	DateTime
+	property :updated_at,  	DateTime
 end
 
-DataMapper.auto_migrate!
+# checks for validity in the model
+DataMapper.finalize
+
+# creates the database
+List.auto_upgrade!
 
 
 #=========================================================================
 #================================== ROUTES ===============================
 #=========================================================================
 
-
+# hit the root of the application and get all 
+# of the records of items from the database
+# then list the in order from newest to oldest
 get '/' do
-	@items = List.all :order => :id.desc
 	erb :index
 end
 
+# create a new object from the model, 
+# insert what was wrote into the content field
+# save the record to the database 
 post '/' do
 	i = List.new
 	i.content = params[:item]
@@ -53,14 +50,19 @@ post '/' do
 	redirect '/show'
 end
 
+# route that shows all the to-do items created
 get '/show' do
+	@lists = List.all(:order => :id.desc, :limit => 5)
 	erb :show
 end
 
+# route that shows info about this web application
 get '/about' do
 	erb :about
 end
 
+# if routes are requested that don't exist
+# direct users to the 404 error page
 not_found do
 	status 404
 	erb :four0four
