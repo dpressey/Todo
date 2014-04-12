@@ -1,16 +1,17 @@
+require 'bundler/setup'
+
 require 'data_mapper'
 require 'sinatra'
 require 'shotgun'
 require 'dm-sqlite-adapter'
-
-require 'bundler/setup'
+require 'dm-postgres-adapter'
 
 
 #=========================================================================
 #================================== MODELS ===============================
 #=========================================================================
 
-DataMapper.setup(:default, 'sqlite:todo.db' || 'postgres://localhost/mydb')
+DataMapper.setup(:default, ENV['sqlite:todo.db'] || 'postgres://localhost/mydb')
 
 class List 
 	include DataMapper::Resource
