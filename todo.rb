@@ -8,7 +8,7 @@ require 'dm-sqlite-adapter'
 #================================== MODELS ===============================
 #=========================================================================
 
-DataMapper::setup(:default, 'sqlite:todo.db')
+DataMapper.setup(:default, 'sqlite:todo.db' || 'postgres://localhost/mydb')
 
 class List 
 	include DataMapper::Resource

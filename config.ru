@@ -1,3 +1,2 @@
-require File.expand_path '../todo.rb', __FILE__
-
+require './todo'
 run Sinatra::Application
