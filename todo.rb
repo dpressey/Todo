@@ -11,7 +11,7 @@ require 'dm-postgres-adapter'
 #================================== MODELS ===============================
 #=========================================================================
 
-DataMapper.setup(:default, ENV['sqlite:todo.db'] || 'postgres://localhost/mydb')
+DataMapper.setup(:default, ENV['DATABASE_URL'] || 'postgres://localhost/mydb')
 
 class List 
 	include DataMapper::Resource
