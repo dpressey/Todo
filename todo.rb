@@ -3,6 +3,8 @@ require 'sinatra'
 require 'shotgun'
 require 'dm-sqlite-adapter'
 
+require 'bundler/setup'
+
 
 #=========================================================================
 #================================== MODELS ===============================
