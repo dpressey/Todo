@@ -3,16 +3,14 @@ require 'bundler/setup'
 require 'data_mapper'
 require 'sinatra'
 require 'shotgun'
-require 'dm-sqlite-adapter'
-require 'dm-postgres-adapter'
+
 
 
 #=========================================================================
 #================================== MODELS ===============================
 #=========================================================================
 
-DataMapper.setup(:default, ENV['DATABASE_URL'] || 'postgres://localhost/mydb')
-
+DataMapper.setup(:default, 'postgres://localhost/mydb')
 class List 
 	include DataMapper::Resource
 
@@ -59,6 +57,10 @@ get '/show' do
 	erb :show
 end
 
+get '/:id' do
+	@list = List.get(params[:id])
+	erb :edit
+end
 # route that updates the items on the show page
 put '/show' do
 end
