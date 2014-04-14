@@ -1,0 +1,9 @@
+<% if @list %>
+	<form id="edit-form" action="/<%= @list.id %>" method="post">
+		<input type="hidden" name="_method" value="put">
+		<textarea id="edit-textarea" name="item"><%= @list.content %></textarea>
+		<input id="edit-button" type="submit" value="Edit Item">
+	</form>
+<% else %>
+	<p>This note is not available</p>
+<% end %>

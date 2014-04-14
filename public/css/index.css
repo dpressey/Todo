@@ -40,10 +40,27 @@ h1 {
 	left: 145px;
 }
 
-textarea {
+#the-textarea {
 	position: relative;
 	width: 1000px;
+	resize: none;
+}
 
+
+#edit-textarea {
+	position: relative;
+	height: 60px;
+	left: 150px;
+	top: 100px;
+}
+
+#edit-button {
+	position: relative;
+	left: 150px;
+	top: 100px;
+	height: 65px;
+	color: white;
+	background-color: #454A59; 
 }
 
 #add-item {
@@ -92,10 +109,46 @@ textarea {
 	float: right;
 }
 
-#delete {
+#show-delete {
 	background: #940000;
 	border-radius: 2px;
+}
+
+a #show-delete {
 	color: white;
+}
+#delete-container {
+	position: relative;
+	top: 150px;
+	left: 290px;
+	height: 250px;
+	width: 900px;
+	border: 0.1em solid black;
+	
+	
+}
+
+#delete-message {
+	position: relative;
+	text-align: center;
+	margin: 0 auto;
+	color: #940000;
+}
+
+#delete-content {
+	position: relative;
+	top: 20px;
+	text-align: center;
+}
+
+#delete-button {
+	position: relative;
+	top: 35px;
+	left: 43%;
+	height: 55px;
+	width: 120px;
+	color: white;
+	background-color: #940000;
 }
 
 #clear-float {

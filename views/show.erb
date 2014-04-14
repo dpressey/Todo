@@ -1,7 +1,7 @@
 <% @lists.each do |list| %>
 	<article class="list-container">
 		<%= list.content %>
-		<button class="button">Edit</button>
-		<button id="delete" class="button">Delete</button>
+		<a href="/<%= list.id %>"><button class="button">Edit</button></a>
+		<a href="/<%= list.id %>/delete"><button id="show-delete" class="button">Delete</button></a>
 	</article>
 <% end %>

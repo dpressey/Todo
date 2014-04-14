@@ -1,0 +1,12 @@
+<% if @list %>
+	<section id="delete-container">
+		<h1 id="delete-message">Are you sure you want to delete this?</h1>
+		<h4 id="delete-content"><%= @list.content %></h4>
+		<form id="delete-form" action="/<%= @list.id %>/delete" method="post">
+			<input type="hidden" name="_method" value="delete">
+			<input id="delete-button" type="submit" value="Delete">
+		</form>
+	</section>
+<% else %>
+	<p>This note is not available</p>
+<% end %>

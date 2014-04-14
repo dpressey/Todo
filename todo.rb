@@ -10,7 +10,8 @@ require 'shotgun'
 #================================== MODELS ===============================
 #=========================================================================
 
-DataMapper.setup(:default, 'postgres://localhost/mydb')
+DataMapper.setup(:default, ENV['DATABASE_URL'] || 'postgres://localhost/mydb')
+#DataMapper.setup(:default, 'sqlite:todo.db')
 class List 
 	include DataMapper::Resource
 
@@ -57,21 +58,39 @@ get '/show' do
 	erb :show
 end
 
+# route that gets the item to be edited
 get '/:id' do
 	@list = List.get(params[:id])
 	erb :edit
 end
-# route that updates the items on the show page
-put '/show' do
+
+# route that updates the item
+put '/:id' do
+	i = List.get(params[:id])
+	i.content = params[:item]
+	i.updated_at = Time.now
+	i.save
+
+	redirect '/show'
+end	
+
+# route that gets the item to be deleted
+get '/:id/delete' do 
+	@list = List.get(params[:id])
+	erb :delete
+
 end
 
-# route that deletes the items on the show page
-delete '/show' do
+# route that deletes the item
+delete '/:id/delete' do
+	i = List.get(params[:id])
+	i.destroy
+
+	redirect '/show'
 end
 
 # if routes are requested that don't exist
 # direct users to the 404 error page
 not_found do
 	status 404
-	erb :four0four
 end
