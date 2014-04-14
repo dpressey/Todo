@@ -38,9 +38,6 @@ GEM
       json (~> 1.6)
       json_pure (~> 1.6)
       multi_json (~> 1.0)
-    dm-sqlite-adapter (1.2.0)
-      dm-do-adapter (~> 1.2.0)
-      do_sqlite3 (~> 0.10.6)
     dm-timestamps (1.2.0)
       dm-core (~> 1.2.0)
     dm-transactions (1.2.0)
@@ -56,8 +53,6 @@ GEM
     dm-validations (1.2.0)
       dm-core (~> 1.2.0)
     do_postgres (0.10.14)
-      data_objects (= 0.10.14)
-    do_sqlite3 (0.10.14)
       data_objects (= 0.10.14)
     fastercsv (1.5.5)
     json (1.8.1)
@@ -83,7 +78,6 @@ GEM
       rack (~> 1.4)
       rack-protection (~> 1.4)
       tilt (~> 1.3, >= 1.3.4)
-    sqlite3 (1.3.9)
     stringex (1.5.1)
     tilt (1.4.1)
     tux (0.3.0)
@@ -99,9 +93,7 @@ PLATFORMS
 DEPENDENCIES
   data_mapper
   dm-postgres-adapter
-  dm-sqlite-adapter
   pg
   shotgun
   sinatra
-  sqlite3
   tux
